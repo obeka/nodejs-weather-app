@@ -3,15 +3,17 @@ const express = require('express');
 const app = express();
 const hbs = require('hbs');
 const geocode = require('./utils/geocode');
-const forecast = require('./utils/forecast')
+const forecast = require('./utils/forecast');
+const port = process.env.PORT || 3000;
+
+//Setup directory for static files
+app.use(express.static(publicDirectory)) /* Static dosyalar için (html, css, js ...) */
 
 //Define paths for Express config
 const publicDirectory = path.join(__dirname, '../public');
 const viewPath = path.join(__dirname,'../templates/views');
 const partialsPath = path.join(__dirname, '../templates/partials')
 
-//Setup directory for static files
-app.use(express.static(publicDirectory)) /* Static dosyalar için (html, css, js ...) */
 
 //Setup handlesbars
 app.set('view engine', 'hbs');
@@ -99,6 +101,6 @@ app.get('*', (req, res) => {
     })
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on 3000 port.')
+app.listen(port, () => {
+    console.log(`Server is running on ${port} port.`)
 });
