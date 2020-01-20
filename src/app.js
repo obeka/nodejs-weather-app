@@ -61,7 +61,13 @@ app.get('/weather', (req, res) => {
                 } else {
                     res.send({
                         location: data.location,
-                        forecast: `${forecastData.daily.data[0].summary} It is currently ${forecastData.currently.temperature} degree and there is a ${forecastData.currently.precipProbability}% chance of rain.`,
+                        forecast: `${forecastData.daily.data[0].summary} 
+                        It is currently ${forecastData.currently.temperature}
+                         degree and there is a ${forecastData.currently.precipProbability}% 
+                         chance of rain.
+                         Higest Temperature : ${forecastData.daily.data[0].temperatureHigh},
+                         Lowest Temperature : ${forecastData.daily.data[0].temperatureLow}
+                         `,
                         address: req.query.address
                     })
                 }
